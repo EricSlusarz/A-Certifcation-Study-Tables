@@ -280,12 +280,14 @@ NetBIOS	udp/137	NetBIOS name service	Register,remove,and find Windows Service by
 NetBIOS	udp/138	NetBIOS datagram service	Windows connectionless data transfer
 NetBIOS	udp/139	NetBIOS session service	Windows connection-oriented data transfer
 SMB	tcp/445	Server Message block	Windows file transfer and printer sharing
-AFP tcp/548	Apple Filing Protocol	Mac OS file transfers
+AFP	tcp/548	Apple Filing Protocol	Mac OS file transfers
 SLP	tcp/427, udp/427	Service Location Protocol	Automate the IP addres configuration process
 DHCP	udp/67, udp/68	Dynamic Host Configuration Protocol	Automate and IP address configuration process
 LDAP	tcp/389	Lightweight Directory Access Protocol	Directory Services
 SNMP	udp/161	Simple Network Management Protocol	Gather metrics and manage network devices
-
+MAPI	135	Messaging Application Programming Interface
+Syslog	514	Syslog	Sends system status messages to a central server for monitoring and review.
+NFS	2049,111	Network File System	Used to share files on Linux and other Unix-like networks.
 
 ++++answer:802.11c
 ++++answer:802.11ab
@@ -325,6 +327,51 @@ Category 5	100BASE-TX, 1000BASE-T	100 meters
 Category 5e(enchanced)	100BASE-TX, 1000BASE-T	100 meters
 Category 6	10GBASE-T	37 to 55 meters
 Category 6A(augmented)	10GBASE-T	100 meters
+
+
+OSI (Open Source Interconnection) 7 Layer Model
+Layer	Layer Description	Application/Example	Cental Device/Protocols	DOD4 Model
+Application(7)	Serves as the windows for users and application processes to access the network services.	End User Layer(Program that opens what was sent...)	User Applications	Process
+Presentation(6)	Formats the data to be presented to the application layer. It can be viewed as the "translator" for the network.	Syntax Layer(encrypt & decrypt if needed)	JPEG/ASCII/EBDIC/TIFF/GIF/PICT	Process
+Session(5)	Allows session establishment between processes running on different stations.	Synch & send to ports(logical ports)	Logical Ports(RPC/SQL/NFS/NetBIOS names	Process
+Transport(4)	Ensures that messages are delivered error-free, in sequence, and with no losses or duplications.	TCP(Host to Host, Flow Control; filtering packets)	TCP/SPX/UDP	Host to Host
+Network(3)	Controls the operations of the subnet, deciding which physical path the data takes.	Packets("letter", contains IP address)	Routers(IP/IPX/ICMP)	Internet
+Data Link(2)	Provides error-free transfer of data frames from one node to another over the Physical layer.	Frames("envelopes", contains MAC address; end to end)	Switch,Bridge,WAP(PPP,SLIP)	Network
+Physical(1)	Concerned with the transmission and reception of the unstructured raw bit stream over the physical medium	Physical structure(Cables, hubs, etc.)	Hub	Network
+
+
+++++answer: Classless
+++++answer: High speed cable used for industrail networks
+++++answer: 2000GHz
+++++answer: 2GHz
+++++answer: 1GHz
+++++answer: 10kHz
+Twisted-pair Standards
+Common Name	ISO/IEC 11801	Frequency	Description/Use
+Cat 1	Class A	100kHz	Low speed cable used for older voice telephone installations. Not for use in data networks.
+Cat 2	Class B	1Mhz	Used in older data networks like ARCnet and early Token Ring.
+Cat 3	Class C	16MHz	Used in early Etheret; unsuitable for faster networks, but still used for voice telephone cables.
+Cat 4	Not Standard	20MHz	Used by early Ethernet and some Token Ring networks, but was never common.
+Cat 5	Class D	100MHz	Widely used for Fast Ethernet and Gigabit Ethernet networks, also used for telepone and video. Superseded by Cat5e.
+Cat 6	Class E	250MHz	Stronger crosstalk specifications than Cat5e. Popular for new Gigabiit Ethernet installations, and short distance 10 Gigabit Ethernet networks. Frequnetly shileded for addtional EMI protection; if so, the shielding needs a grounded connection.
+Cat 6A	Class Ea	500MHz	Augmented Category 6. Shilded, and allows ful distance 10 gigabit Ethernet operation.
+Cat 7	Class F	600MHz	Similar to Cat6A, but screened and shilded for higher noise resistance.
+Cat 7A	Class Fa	1000MHz	Augmented Category 7. Maybe suitable for emerging 40 Gigabit Ethernet.
+
+
+Twisted-pair Connection Troubleshooting
+Problem	Impact	Description/Cause	Solution
+Short	No Signal	Contact between two wires that should be separate. May be intermittent.	Replace the faulty cable.
+Open	No Signal	A break in a connection that should be continuous. Maybe intermittent.	Ensure all cables are fimrly connected. Replace the faulty cable.
+Attenuation	Noise	Cable too long, or cable resistance too high.	Replace with higher grade cable; use a shorter cable; segment the cable with repeaters
+Bad cable or connector	Noise or no signal	Defective component, or just a lower wiring standard.	Replace the cable.
+EMI	Noise	Interference from external electrical or radio sources. Can be intermittent depending on those sources.	Isolate the cable from interference by rerouting the cable, moving the source, or adding shielding.
+Crosstalk	Noise	Interference between two wire pairs.	Replace the cable, possible with internally shielded U/FTP.
+Wrong termination Standard	Wrong Signal	One end terminated in the wrong wire order. Never intermittent.	Remove one end and terminate it correctly. Use the same standard on both ends.
+Network hardware failure	Noise or no signal	Failure in physical device such as a NIC or modular transceiver.	Ensure device is powered on and functioning. Replace faulty component.
+Speed or duplex mismatch	Slow or no connection	Both ends manually set to an inefficient speed or duplex setting, each ebd set to a different speed or duplex setting, or devices unable to automatically negotiate mutually compatible settings.	Fix device settings. Replace cable. Replace on device.
+
+
 
 
 </html>
